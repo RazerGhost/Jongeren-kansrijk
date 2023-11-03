@@ -12,12 +12,22 @@ class Activiteit extends Model
     protected $fillable = [
         'naam',
         'beschrijving',
-        'locatie',
+        'adres',
         'datum',
-        'deelnemers',
+        'jongeren',
     ];
 
     protected $casts = [
         'datum' => 'datetime',
     ];
+
+    public function EncodeJongeren($value)
+    {
+        $this->attributes['jongeren'] = json_encode($value);
+    }
+
+    public function DecodeJongeren($value)
+    {
+        return $this->attributes['jongeren'] = json_decode($value);
+    }
 }
