@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('instituten', function (Blueprint $table) {
             $table->id();
             $table->string('naam');
+            $table->string('beschrijving');
             $table->string('adres');
             $table->string('email')->unique();
-            $table->string('activiteiten');
+            $table->string('telefoonnummer');
+            $table->json('jongeren');
             $table->timestamps();
         });
     }

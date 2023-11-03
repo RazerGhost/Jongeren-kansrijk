@@ -12,13 +12,13 @@ class Instituut extends Model
     protected $table = 'instituten';
     protected $fillable = [
         'naam',
+        'beschrijving',
         'adres',
         'email',
-        'activiteiten',
+        'telefoonnummer',
+        'jongeren',
     ];
-
-    public function activiteiten(): HasMany
-    {
-        return $this->hasMany(Activiteit::class);
-    }
+    protected $casts = [
+        'jongeren' => 'array',
+    ];
 }

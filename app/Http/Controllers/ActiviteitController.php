@@ -72,12 +72,9 @@ class ActiviteitController extends Controller
     {
         $Activiteit = Activiteit::find($id);
 
-        if (!$Activiteit) {
-            return redirect()->route('')->with('error', '');
-        }
-
         $Activiteit->delete();
 
         return redirect()->route('')->with('success', '');
     }
+
 }

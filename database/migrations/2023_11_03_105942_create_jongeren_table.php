@@ -16,12 +16,13 @@ return new class extends Migration
             $table->string('voornaam');
             $table->string('achternaam');
             $table->date('geboortedatum');
+            $table->string('telefoonnummer');
             $table->string('email')->unique();
             $table->string('adres');
+            $table->foreignId('instituut')->constrained('instituten');
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */

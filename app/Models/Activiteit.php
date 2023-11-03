@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Activiteit extends Model
 {
@@ -12,22 +13,13 @@ class Activiteit extends Model
     protected $fillable = [
         'naam',
         'beschrijving',
-        'adres',
+        'locatie',
         'datum',
         'jongeren',
     ];
 
     protected $casts = [
         'datum' => 'datetime',
+        'jongeren' => 'array',
     ];
-
-    public function EncodeJongeren($value)
-    {
-        $this->attributes['jongeren'] = json_encode($value);
-    }
-
-    public function DecodeJongeren($value)
-    {
-        return $this->attributes['jongeren'] = json_decode($value);
-    }
 }

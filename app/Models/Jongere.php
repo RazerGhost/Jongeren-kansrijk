@@ -13,8 +13,10 @@ class Jongere extends Model
         'voornaam',
         'achternaam',
         'geboortedatum',
+        'telefoonnummer',
         'email',
         'adres',
+        'instituut',
     ];
     protected $casts = [
         'geboortedatum' => 'date:d-m-Y',

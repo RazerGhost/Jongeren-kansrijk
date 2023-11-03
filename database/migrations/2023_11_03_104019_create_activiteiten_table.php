@@ -17,8 +17,7 @@ return new class extends Migration
             $table->string('beschrijving');
             $table->string('locatie');
             $table->datetime('datum');
-            $table->foreignId('deelnemers')->constrained('jongeren');
-            $table->foreignId('instituut_id')->constrained('instituten');
+            $table->json('jongeren');
             $table->timestamps();
         });
     }
