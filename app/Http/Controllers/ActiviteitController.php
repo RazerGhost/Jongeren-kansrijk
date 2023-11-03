@@ -20,7 +20,7 @@ class ActiviteitController extends Controller
         return view("", compact("Activiteiten"));
     }
 
-    public function Store(Request $request): RedirectResponse
+    public function StoreAct(Request $request): RedirectResponse
     {
         $request->validate([
             'naam' => 'required',
