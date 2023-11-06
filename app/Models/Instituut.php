@@ -16,9 +16,5 @@ class Instituut extends Model
         'adres',
         'email',
         'telefoonnummer',
-        'jongeren',
-    ];
-    protected $casts = [
-        'jongeren' => 'array',
     ];
 }

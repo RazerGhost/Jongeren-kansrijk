@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('adres');
             $table->string('email')->unique();
             $table->string('telefoonnummer');
-            $table->json('jongeren');
             $table->timestamps();
         });
     }

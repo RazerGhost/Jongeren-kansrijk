@@ -15,7 +15,7 @@ class InstituutController extends Controller
     public function AddInstituut()
     {
         $Jongeren = Jongere::all();
-        return view("", compact("Jongeren"));
+        return view("instituut", compact("Jongeren"));
     }
 
     public function StoreInstituut(Request $request): RedirectResponse
@@ -24,9 +24,8 @@ class InstituutController extends Controller
             'naam' => 'required',
             'beschrijving' => 'required',
             'adres' => 'required',
-            'email' => 'required',
-            'telefoonnummer' => 'required',
-            'jongeren' => 'required',
+            'email' => 'required|email',
+            'telefoonnummer' => 'required|numeric',
         ]);
 
         Instituut::create([
@@ -35,10 +34,9 @@ class InstituutController extends Controller
             'adres' => $request->adres,
             'email' => $request->email,
             'telefoonnummer' => $request->telefoonnummer,
-            'jongeren' => $request->jongeren,
         ]);
 
-        return redirect()->route('')->with('success', '');
+        return redirect()->route('dashboard')->with('status', 'success');
     }
 
     public function UpdateInstituut(Request $request, $id): RedirectResponse
