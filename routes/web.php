@@ -26,7 +26,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // Instituut routes
     Route::post('/instituut/store', [InstituutController::class,'StoreInstituut'])->name('instituut.store');
+    Route::get('/instituut/edit/{id}', [InstituutController::class,'EditInstituut'])->name('instituut.edit');
+    Route::patch('/instituut/update/{id}', [InstituutController::class,'UpdateInstituut'])->name('instituut.update');
+    Route::delete('/instituut/delete/{id}', [InstituutController::class,'DestroyInstituut'])->name('instituut.delete');
 });
 
 require __DIR__.'/auth.php';

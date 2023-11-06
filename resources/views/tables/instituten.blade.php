@@ -25,20 +25,20 @@
                 <td>{{ __($Instituut->email) }}</td>
                 <td>{{ __($Instituut->telefoonnummer) }}</td>
                 <td>
-                    <a onclick="showModal('delete')">
-                        <x-trash-can />
-                    </a>
-                    <x-bladewind.modal name="delete">
-                        Please agree to the terms dwAD conditions of
-                        the agreement before proceeding.
-                    </x-bladewind.modal>
-                    <a onclick="showModal('edit')">
-                        <x-pen />
-                    </a>
-                    <x-bladewind.modal name="edit">
-                        Please agree to the terms and conditions of
-                        the agreement before proceeding.
-                    </x-bladewind.modal>
+                <div class="flex flex-row gap-4">
+                    <div>
+                        <form action="{{ route('instituut.delete', $Instituut->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit"><x-trash-can /></button>
+                        </form>
+                    </div>
+                    <div>
+                        <a href="{{ route('instituut.edit', $Instituut->id) }}">
+                            <x-pen />
+                        </a>
+                    </div>
+                </div>
                 </td>
             </tr>
         @endforeach
@@ -46,7 +46,7 @@
     <div class="flex flex-row mt-5">
         <div class="flex flex-1"></div>
         <div class="flex flex-row-reverse flex-1">
-            @include('instituut.Addinstituut')
+            @include('instituut.add-instituut')
         </div>
     </div>
 </section>

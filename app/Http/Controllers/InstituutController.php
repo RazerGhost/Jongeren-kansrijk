@@ -12,14 +12,16 @@ use App\Models\Instituut;
 
 class InstituutController extends Controller
 {
+    // Function to show the Instituut page
     public function AddInstituut()
     {
-        $Jongeren = Jongere::all();
-        return view("instituut", compact("Jongeren"));
+        return view("instituut");
     }
 
+    // Function to store a new Instituut
     public function StoreInstituut(Request $request): RedirectResponse
     {
+        // Validate the request...
         $request->validate([
             'naam' => 'required',
             'beschrijving' => 'required',
@@ -27,7 +29,7 @@ class InstituutController extends Controller
             'email' => 'required|email',
             'telefoonnummer' => 'required|numeric',
         ]);
-
+        // Create new Instituut
         Instituut::create([
             'naam' => $request->naam,
             'beschrijving' => $request->beschrijving,
@@ -35,12 +37,21 @@ class InstituutController extends Controller
             'email' => $request->email,
             'telefoonnummer' => $request->telefoonnummer,
         ]);
-
+        // Redirect to dashboard
         return redirect()->route('dashboard')->with('status', 'success');
+    }
+
+    public function EditInstituut($id): View
+    {
+        $Instituut = Instituut::find($id);
+
+        return view('instituut.edit-instituut', compact('Instituut'));
     }
 
     public function UpdateInstituut(Request $request, $id): RedirectResponse
     {
+        //dd($id, $request->all());
+
         $Instituut = Instituut::find($id);
 
         $request->validate([
@@ -51,10 +62,6 @@ class InstituutController extends Controller
             'telefoonnummer' => 'required',
             'jongeren' => 'required',
         ]);
-
-        if (!$Instituut) {
-            return redirect()->route('')->with('error', '');
-        }
 
         $Instituut->update([
             'naam' => $request->naam,
@@ -68,13 +75,14 @@ class InstituutController extends Controller
         return redirect()->route('')->with('success', '');
     }
 
-    public function DestroyInstituut(Request $request, $id): RedirectResponse
+    public function DestroyInstituut($id): RedirectResponse
     {
+        //dd($id);
         $Instituut = Instituut::find($id);
 
         $Instituut->delete();
 
-        return redirect()->route('')->with('success', '');
+        return redirect()->route('dashboard')->with('status', 'success');
     }
 
 }
