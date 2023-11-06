@@ -23,6 +23,16 @@
                 <td>{{ __($Activiteit->locatie) }}</td>
                 <td>{{ __($Activiteit->datum) }}</td>
                 <td>{{ __($Activiteit->jongeren) }}</td>
+                <td>
+                    <x-bladewind.dropmenu>
+                        <x-bladewind.dropmenu-item>
+                            Edit
+                        </x-bladewind.dropmenu-item>
+                        <x-bladewind.dropmenu-item>
+                            Invite John to Marketing
+                        </x-bladewind.dropmenu-item>
+                    </x-bladewind.dropmenu>
+                </td>
             </tr>
         @endforeach
     </x-bladewind.table>

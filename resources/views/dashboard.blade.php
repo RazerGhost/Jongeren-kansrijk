@@ -6,9 +6,10 @@
     </x-slot>
     @if (session('status') === 'success')
         <script>
-            showNotification('Succesvol toegevoegd', 'Het instituut is succesvol toegevoegd aan de instituten', 'success');
+            showNotification('Succesvol toegevoegd', 'Het instituut is succesvol toegevoegd aan de instituten', success);
         </script>
     @endif
+    <x-bladewind.notification />
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
