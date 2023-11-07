@@ -1,9 +1,8 @@
-<x-bladewind.button size="small" onclick="showModal('Addinstituut')">
+<x-primary-button x-on:click.prevent="$dispatch('open-modal', 'Addinstituut')">
     Voeg instituut toe
-</x-bladewind.button>
-<x-bladewind.modal name="Addinstituut" title="Instituut aan het toevoegen" ok_button_label="Voeg toe" ok_button_action="storeinstitute()">
-
-    <form action="{{ route('instituut.store') }}" method="post" class="storeinstitute">
+</x-primary-button>
+<x-modal name="Addinstituut" focusable>
+    <form action="{{ route('instituut.store') }}" method="post" class="p-6">
         @csrf
 
         <div>
@@ -35,15 +34,15 @@
             <x-text-input id="telefoonnummer" name="telefoonnummer" type="text" class="block w-full mt-1" required autofocus autocomplete="telefoonnummer" />
             <x-input-error class="mt-2" :messages="$errors->get('telefoonnummer')" />
         </div>
-    </form>
-</x-bladewind.modal>
 
-<script>
-    storeinstitute = () => {
-        if (validateForm('.storeinstitute')) {
-            domEl('.storeinstitute').submit();
-        } else {
-            return false;
-        }
-    }
-</script>
+        <div class="flex justify-end mt-6">
+            <x-secondary-button x-on:click="$dispatch('close')">
+                {{ __('Cancel') }}
+            </x-secondary-button>
+
+            <x-primary-button class="ml-3">
+                {{ __('Add Instituut') }}
+            </x-primary-button>
+        </div>
+    </form>
+</x-modal>
