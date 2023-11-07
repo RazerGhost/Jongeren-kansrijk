@@ -60,7 +60,6 @@ class InstituutController extends Controller
             'adres' => 'required',
             'email' => 'required',
             'telefoonnummer' => 'required',
-            'jongeren' => 'required',
         ]);
 
         $Instituut->update([
@@ -69,10 +68,9 @@ class InstituutController extends Controller
             'adres' => $request->adres,
             'email' => $request->email,
             'telefoonnummer' => $request->telefoonnummer,
-            'jongeren' => $request->jongeren,
         ]);
 
-        return redirect()->route('')->with('success', '');
+        return redirect()->route('dashboard')->with('status', 'success');
     }
 
     public function DestroyInstituut($id): RedirectResponse

@@ -10,6 +10,7 @@
     </header>
     <x-bladewind.table divider="thin">
         <x-slot name="header">
+            <th></th>
             <th>Naam</th>
             <th>Beschrijving</th>
             <th>Adres</th>
@@ -19,6 +20,7 @@
         </x-slot>
         @foreach ($Instituten as $Instituut)
             <tr>
+                <td>{{ __($Instituut->id) }}</td>
                 <td>{{ __($Instituut->naam) }}</td>
                 <td>{{ __($Instituut->beschrijving) }}</td>
                 <td>{{ __($Instituut->adres) }}</td>
