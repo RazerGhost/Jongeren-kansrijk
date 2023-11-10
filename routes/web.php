@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\InstituutController;
+use App\Http\Controllers\JongereController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +33,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/instituut/edit/{id}', [InstituutController::class,'EditInstituut'])->name('instituut.edit');
     Route::patch('/instituut/update/{id}', [InstituutController::class,'UpdateInstituut'])->name('instituut.update');
     Route::delete('/instituut/delete/{id}', [InstituutController::class,'DestroyInstituut'])->name('instituut.delete');
+
+    // Jongere routes
+    Route::post('/jongere/store', [JongereController::class, 'StoreJongere'])->name('jongere.store');
+    Route::get('/jongere/edit/{id}', [JongereController::class,'EditJongere'])->name('jongere.edit');
+    Route::patch('/jongere/update/{id}', [JongereController::class,'UpdateJongere'])->name('jongere.update');
+    Route::delete('/jongere/delete/{id}', [JongereController::class,'DestroyJongere'])->name('jongere.delete');
 });
 
 require __DIR__.'/auth.php';

@@ -15,7 +15,7 @@ class JongereController extends Controller
     public function AddJongere(): View
     {
         $Instituten = Instituut::all();
-        return view("", compact("Instituten"));
+        return view("Jongere.add-Jongere", compact("Instituten"));
     }
 
     public function StoreJongere(Request $request)
@@ -40,7 +40,14 @@ class JongereController extends Controller
             'instituut' => $request->instituut,
         ]);
 
-        return redirect()->route('')->with('success', '');
+        return redirect()->route('')->with('status', 'success');
+    }
+
+    public function EditJongere($id): View
+    {
+        $Jongere = Jongere::find($id);
+
+        return view('Jongere.edit-Jongere', compact('Jongere'));
     }
 
     public function UpdateJongere(Request $request, $id): RedirectResponse
@@ -71,15 +78,15 @@ class JongereController extends Controller
             'instituut' => $request->instituut,
         ]);
 
-        return redirect()->route('')->with('success', '');
+        return redirect()->route('')->with('status', 'success');
     }
 
-    public function DestroyJongere(Request $request, $id): RedirectResponse
+    public function DestroyJongere($id): RedirectResponse
     {
         $Jongere = Jongere::find($id);
 
         $Jongere->delete();
 
-        return redirect()->route('')->with('success', '');
+        return redirect()->route('dashboard')->with('status', 'success');
     }
 }
