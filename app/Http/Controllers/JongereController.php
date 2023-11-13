@@ -24,23 +24,23 @@ class JongereController extends Controller
             'voornaam' => 'required',
             'achternaam' => 'required',
             'geboortedatum' => 'required',
+            'adres' => 'required',
             'telefoonnummer' => 'required',
             'email' => 'required',
-            'adres' => 'required',
             'instituut' => 'required',
         ]);
-
+        // dd($request->all());
         Jongere::create([
             'voornaam' => $request->voornaam,
             'achternaam' => $request->achternaam,
             'geboortedatum' => $request->geboortedatum,
+            'adres' => $request->adres,
             'telefoonnummer' => $request->telefoonnummer,
             'email' => $request->email,
-            'adres' => $request->adres,
             'instituut' => $request->instituut,
         ]);
 
-        return redirect()->route('')->with('status', 'success');
+        return redirect()->route('dashboard')->with('status', 'success');
     }
 
     public function EditJongere($id): View
@@ -65,7 +65,7 @@ class JongereController extends Controller
         ]);
 
         if (!$Jongere) {
-            return redirect()->route('')->with('error', '');
+            return redirect()->route('dashboard')->with('error', '');
         }
 
         $Jongere->update([

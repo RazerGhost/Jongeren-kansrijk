@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Jongere extends Model
 {
@@ -18,9 +19,10 @@ class Jongere extends Model
         'adres',
         'instituut',
     ];
-    protected $casts = [
-        'geboortedatum' => 'date:d-m-Y',
-    ];
 
+    public function activiteiten(): BelongsTo
+    {
+        return $this->belongsTo(Activiteit::class);
+    }
 
 }

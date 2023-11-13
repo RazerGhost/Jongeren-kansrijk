@@ -26,6 +26,7 @@
 }
 darkMode = JSON.parse(localStorage.getItem('darkMode'));
 $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))" x-cloak>
+    <script src="{{ asset('vendor/bladewind/js/helpers.js') }}" type="text/javascript"></script>
     <div x-bind:class="{ 'dark': darkMode === true }" class="min-h-screen bg-gray-100">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
             @include('layouts.navigation')
@@ -44,7 +45,6 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                 {{ $slot }}
             </main>
         </div>
-        <script src="{{ asset('vendor/bladewind/js/helpers.js') }}" type="text/javascript"></script>
 </body>
 
 </html>

@@ -1,8 +1,18 @@
-<x-primary-button x-on:click.prevent="$dispatch('open-modal', 'Addinstituut')">
-    Voeg instituut toe
+<?php
+$InstitutenOptions = [];
+
+foreach ($Instituten as $Instituut) {
+    $InstitutenOptions[] = [
+        'naam' => $Instituut->naam,
+        'id' => $Instituut->id,
+    ];
+}
+?>
+<x-primary-button x-on:click.prevent="$dispatch('open-modal', 'Addjongere')">
+    Voeg een Jongere toe
 </x-primary-button>
-<x-modal name="Addinstituut" focusable>
-    <form action="{{ route('instituut.store') }}" method="post" class="p-6">
+<x-modal name="Addjongere" focusable>
+    <form action="{{ route('jongere.store') }}" method="post" class="p-6">
         @csrf
 
         <div>
@@ -24,6 +34,12 @@
         </div>
 
         <div>
+            <x-input-label for="adres" :value="__('Adres')" />
+            <x-text-input id="adres" name="adres" type="text" class="block w-full mt-1" required autofocus autocomplete="adres" />
+            <x-input-error class="mt-2" :messages="$errors->get('adres')" />
+        </div>
+
+        <div>
             <x-input-label for="telefoonnummer" :value="__('Telefoonnummer')" />
             <x-text-input id="telefoonnummer" name="telefoonnummer" type="text" class="block w-full mt-1" required autofocus autocomplete="telefoonnummer" />
             <x-input-error class="mt-2" :messages="$errors->get('telefoonnummer')" />
@@ -36,9 +52,13 @@
         </div>
 
         <div>
-            <x-input-label for="adres" :value="__('Adres')" />
-            <x-text-input id="adres" name="adres" type="text" class="block w-full mt-1" required autofocus autocomplete="adres" />
-            <x-input-error class="mt-2" :messages="$errors->get('adres')" />
+            <x-input-label for="instituut" :value="__('Instituut')" />
+            <x-bladewind.select name="instituut"
+                searchable="true"
+                required="true"
+                label_key="naam"
+                value_key="id"
+            :data="$InstitutenOptions" />
         </div>
 
         <div class="flex justify-end mt-6">

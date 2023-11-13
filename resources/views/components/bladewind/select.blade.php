@@ -138,16 +138,16 @@
                 <x-bladewind::icon name="star" class="!text-red-400 !w-2 !h-2 mt-[-2px]" type="solid"/>
             @endif
         </div>
-        <div class="text-left grow display-area hidden whitespace-nowrap overflow-x-scroll p-0 m-0"></div>
-        <div class="whitespace-nowrap inline-flex">
+        <div class="hidden p-0 m-0 overflow-x-scroll text-left grow display-area whitespace-nowrap"></div>
+        <div class="inline-flex whitespace-nowrap">
             <x-bladewind::icon name="chevron-right" class="scroll-right !-mr-1 hidden"/>
             <x-bladewind::icon name="x-circle" type="solid"
                                class="reset w-6 h-6 fill-slate-300 hover:fill-slate-500 text-white dark:!text-dark-200 hidden dark:!fill-dark-700 dark:hover:!fill-dark-900"/>
             <x-bladewind::icon name="chevron-up-down" class="opacity-40 !ml-2"/>
         </div>
     </div>
-    <div class="w-full absolute z-30 rounded-br-lg rounded-bl-lg bg-white shadow-sm shadow-slate-400 border-2 
-        border-blue-400 dark:text-slate-300 dark:border-slate-700 dark:bg-slate-800 border-t-0 -mt-1.5 
+    <div class="w-full absolute z-30 rounded-br-lg rounded-bl-lg bg-white shadow-sm shadow-slate-400 border-2
+        border-blue-400 dark:text-slate-300 dark:border-slate-700 dark:bg-slate-800 border-t-0 -mt-1.5
         hidden bw-select-items-container overflow-scroll max-h-64 animate__animated animate__fadeIn animate__faster">
         <div class="sticky top-0 min-w-full bg-slate-100 dark:bg-slate-700 py-1 pr-0 -pl-1 @if(!$searchable) hidden @endif">
             <x-bladewind::input
@@ -157,7 +157,7 @@
                     suffix="magnifying-glass"
                     suffix_is_icon="true"/>
         </div>
-        <div class="divide-y divide-slate-100 dark:divide-slate-700 bw-select-items mt-0">
+        <div class="mt-0 divide-y divide-slate-100 dark:divide-slate-700 bw-select-items">
             @if($data !== 'manual')
                 @foreach ($data as $item)
                     <x-bladewind::select-item

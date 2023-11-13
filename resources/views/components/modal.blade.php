@@ -32,9 +32,9 @@
     } else {
         document.body.classList.remove('overflow-y-hidden');
     }
-})" x-on:open-modal.window="$event.detail == '{{ $name }}' ? show = true : null" x-on:close.stop="show = false" x-on:keydown.escape.window="show = false" x-on:keydown.tab.prevent="$event.shiftKey || nextFocusable().focus()" x-on:keydown.shift.tab.prevent="prevFocusable().focus()" x-show="show" class="fixed inset-0 z-50 flex items-center justify-center px-4 py-6 overflow-y-auto bg-opacity-100 backdrop-blur-md sm:px-0" style="display: {{ $show ? 'block' : 'none' }}">
+})" x-on:open-modal.window="$event.detail == '{{ $name }}' ? show = true : null" x-on:close.stop="show = false" x-on:keydown.escape.window="show = false" x-on:keydown.tab.prevent="$event.shiftKey || nextFocusable().focus()" x-on:keydown.shift.tab.prevent="prevFocusable().focus()" x-show="show" class="fixed inset-0 z-20 flex items-center justify-center px-4 py-6 overflow-y-auto bg-opacity-100 backdrop-blur-md sm:px-0" style="display: {{ $show ? 'block' : 'none' }}">
     <div x-show="show" class="fixed transition-all transform" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95">
-        <div class="relative w-11/12 overflow-hidden bg-gray-900 rounded-lg shadow-xl sm:w-full sm:max-w-2xl">
+        <div class="relative w-11/12 overflow-auto bg-gray-900 rounded-lg shadow-xl sm:w-full sm:max-w-2xl">
             {{ $slot }}
         </div>
     </div>

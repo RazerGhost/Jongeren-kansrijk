@@ -1,14 +1,14 @@
-<button x-data="" x-on:click.prevent="$dispatch('open-modal', 'confirm-instituut-deletion-{{ $Instituut->id }}')"><x-trash-can /></button>
-<x-modal name="confirm-instituut-deletion-{{ $Instituut->id }}" focusable>
-    <form method="post" action="{{ route('instituut.delete', $Instituut->id) }}" class="p-6">
+<button x-data="" x-on:click.prevent="$dispatch('open-modal', 'confirm-instituut-deletion-{{ $Jongere->id }}')"><x-trash-can /></button>
+<x-modal name="confirm-instituut-deletion-{{ $Jongere->id }}" focusable>
+    <form method="post" action="{{ route('jongere.delete', $Jongere->id) }}" class="p-6">
         @csrf
         @method('delete')
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            {{ __('Weet je zeker dat je') }} {{ $Instituut->naam }} {{ __('wilt verwijderen?') }}
+            {{ __('Weet je zeker dat je') }} {{ $Jongere->voornaam }} {{ $Jongere->achternaam }} {{ __('wilt verwijderen?') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{ __('Als je dit instituut verwijderd, worden alle jongeren die hierbij horen ook verwijderd.') }}
+            {{ __('Als je deze Jongere verwijderd, worden alle jongeren die hierbij horen ook verwijderd.') }}
         </p>
 
         <div class="flex justify-end mt-6">
