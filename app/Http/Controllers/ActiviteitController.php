@@ -51,7 +51,6 @@ class ActiviteitController extends Controller
             'beschrijving' => 'required',
             'datum' => 'required',
             'locatie' => 'required',
-            'edit_jongeren' => 'required',
         ]);
 
         if (!$Activiteit) {
@@ -63,7 +62,7 @@ class ActiviteitController extends Controller
             'beschrijving' => $request->beschrijving,
             'datum' => $request->datum,
             'locatie' => $request->locatie,
-            'jongeren' => $request->edit_jongeren,
+            'jongeren' => $request->input("edit_jongeren_{$Activiteit->id}"),
         ]);
 
         return redirect()->route('')->with('status','edited');

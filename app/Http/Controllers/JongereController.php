@@ -61,7 +61,6 @@ class JongereController extends Controller
             'telefoonnummer' => 'required',
             'email' => 'required|email',
             'adres' => 'required',
-            'edit_instituut' => 'required',
         ]);
 
         if (!$Jongere) {
@@ -75,11 +74,12 @@ class JongereController extends Controller
             'telefoonnummer' => $request->telefoonnummer,
             'email' => $request->email,
             'adres' => $request->adres,
-            'instituut' => $request->edit_instituut,
+            'instituut' => $request->input("edit_instituut_{$Jongere->id}"),
         ]);
 
-        return redirect()->route('')->with('status', 'edited');
+        return redirect()->route('dashboard')->with('status', 'edited');
     }
+
 
     public function DestroyJongere($id): RedirectResponse
     {

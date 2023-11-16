@@ -39,14 +39,16 @@ foreach ($Jongeren as $Jongere) {
         </div>
 
         <div>
-            <x-input-label for="edit_jongere" :value="__('Jongere')" />
-            <x-bladewind.select id="edit_jongeren" name="edit_jongere"
+            <x-input-label for="edit_jongere_{{ $Activiteit->id }}" :value="__('Jongere')" />
+            <x-bladewind.select id="edit_jongeren_{{ $Activiteit->id }}" name="edit_jongere_{{ $Activiteit->id }}"
                 searchable="true"
                 required="true"
+                multiple="true"
+                placeholder="Selecteer opnieuw de deelmemers"
                 label_key="edit-voornaam-achternaam"
                 value_key="edit-jid"
             :data="$JongereOptions" />
-            <x-input-error class="mt-2" :messages="$errors->get('edit_Jongere')" />
+            <x-input-error class="mt-2" :messages="$errors->get('edit_Jongere_{{ $Activiteit->id }}')" />
         </div>
 
         <div class="flex justify-end mt-6">

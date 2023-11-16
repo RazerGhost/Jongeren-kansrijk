@@ -56,6 +56,7 @@ foreach ($Instituten as $Instituut) {
             <x-bladewind.select id="add_instituut" name="add_instituut"
                 searchable="true"
                 required="true"
+                placeholder="Selecteer het instituut"
                 label_key="add-naam"
                 value_key="add-id"
             :data="$InstitutenOptions" />

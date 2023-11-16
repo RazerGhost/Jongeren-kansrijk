@@ -45,6 +45,7 @@ foreach ($Jongeren as $Jongere) {
                 searchable="true"
                 required="true"
                 multiple="true"
+                placeholder="Selecteer de deelmemers"
                 label_key="add-voornaam-achternaam"
                 value_key="add-jid"
             :data="$JongereOptions" />
