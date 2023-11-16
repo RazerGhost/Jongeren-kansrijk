@@ -26,7 +26,7 @@ class InstituutController extends Controller
             'naam' => 'required',
             'beschrijving' => 'required',
             'adres' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:instituten',
             'telefoonnummer' => 'required|numeric',
         ]);
         // Create new Instituut
@@ -38,7 +38,7 @@ class InstituutController extends Controller
             'telefoonnummer' => $request->telefoonnummer,
         ]);
         // Redirect to dashboard
-        return redirect()->route('dashboard')->with('status', 'success');
+        return redirect()->route('dashboard')->with('status', 'added');
     }
 
     public function EditInstituut($id): View
@@ -58,9 +58,13 @@ class InstituutController extends Controller
             'naam' => 'required',
             'beschrijving' => 'required',
             'adres' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
             'telefoonnummer' => 'required',
         ]);
+
+        if (!$Instituut) {
+            return redirect()->route('dashboard')->with('status', 'error');
+        }
 
         $Instituut->update([
             'naam' => $request->naam,
@@ -70,7 +74,7 @@ class InstituutController extends Controller
             'telefoonnummer' => $request->telefoonnummer,
         ]);
 
-        return redirect()->route('dashboard')->with('status', 'success');
+        return redirect()->route('dashboard')->with('status', 'edited');
     }
 
     public function DestroyInstituut($id): RedirectResponse
@@ -78,9 +82,13 @@ class InstituutController extends Controller
         //dd($id);
         $Instituut = Instituut::find($id);
 
+        if (!$Instituut) {
+            return redirect()->route('dashboard')->with('status', 'error');
+        }
+
         $Instituut->delete();
 
-        return redirect()->route('dashboard')->with('status', 'success');
+        return redirect()->route('dashboard')->with('status', 'deleted');
     }
 
 }

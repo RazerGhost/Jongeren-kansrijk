@@ -12,7 +12,7 @@ use App\Models\Instituut;
 
 class ActiviteitController extends Controller
 {
-    public function AddAct(): View
+    public function AddActiviteit(): View
     {
         $Activiteiten = Activiteit::all();
         $Jongeren = Jongere::all();
@@ -20,61 +20,66 @@ class ActiviteitController extends Controller
         return view("", compact("Activiteiten"));
     }
 
-    public function StoreAct(Request $request): RedirectResponse
+    public function StoreActiviteit(Request $request): RedirectResponse
     {
+        //dd($request->all());
         $request->validate([
             'naam' => 'required',
             'beschrijving' => 'required',
-            'adres' => 'required',
             'datum' => 'required',
-            'jongeren' => 'required',
+            'locatie' => 'required',
+            'add_jongeren' => 'required',
         ]);
 
         Activiteit::create([
             'naam' => $request->naam,
             'beschrijving' => $request->beschrijving,
-            'adres' => $request->adres,
             'datum' => $request->datum,
-            'jongeren' => $request->jongeren,
+            'locatie' => $request->locatie,
+            'jongeren' => $request->add_jongeren,
         ]);
 
-        return redirect()->route('')->with('success', '');
+        return redirect()->route('dashboard')->with('status', 'added');
     }
 
-    public function UpdateAct(Request $request, $id): RedirectResponse
+    public function UpdateActiviteit(Request $request, $id): RedirectResponse
     {
         $Activiteit = Activiteit::find($id);
 
         $request->validate([
             'naam' => 'required',
             'beschrijving' => 'required',
-            'adres' => 'required',
             'datum' => 'required',
-            'jongeren' => 'required',
+            'locatie' => 'required',
+            'edit_jongeren' => 'required',
         ]);
 
         if (!$Activiteit) {
-            return redirect()->route('')->with('error', '');
+            return redirect()->route('')->with('status', 'error');
         }
 
         $Activiteit->update([
             'naam' => $request->naam,
             'beschrijving' => $request->beschrijving,
-            'adres' => $request->adres,
             'datum' => $request->datum,
-            'jongeren' => $request->jongeren,
+            'locatie' => $request->locatie,
+            'jongeren' => $request->edit_jongeren,
         ]);
 
-        return redirect()->route('')->with('success','');
+        return redirect()->route('')->with('status','edited');
     }
 
-    public function DestroyAct(Request $request, $id): RedirectResponse
+    public function DestroyActiviteit($id): RedirectResponse
     {
         $Activiteit = Activiteit::find($id);
 
+        if (!$Activiteit) {
+            return redirect()->route('dashboard')->with('status', 'error');
+        }
+
         $Activiteit->delete();
 
-        return redirect()->route('')->with('success', '');
+        return redirect()->route('dashboard')->with('status', 'deleted');
     }
 
 }

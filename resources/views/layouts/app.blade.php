@@ -45,6 +45,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                 {{ $slot }}
             </main>
         </div>
+        <script src="{{ asset('vendor/bladewind/js/helpers.js') }}"></script>
 </body>
 
 </html>

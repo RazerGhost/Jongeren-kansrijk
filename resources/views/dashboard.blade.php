@@ -4,6 +4,23 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
+    @if (session('status') === 'added')
+        <x-bladewind.alert type="success">
+            Data was successfully saved!
+        </x-bladewind.alert>
+    @elseif (session('status') === 'edited')
+        <x-bladewind.alert type="info">
+            Data was successfully edited!
+        </x-bladewind.alert>
+    @elseif (session('status') === 'deleted')
+        <x-bladewind.alert type="error">
+            Data was successfully deleted!
+        </x-bladewind.alert>
+    @elseif (session('status') === 'error')
+        <x-bladewind.alert type="error">
+            Something went wrong!
+        </x-bladewind.alert>
+    @endif
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">

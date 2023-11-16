@@ -26,8 +26,8 @@ class JongereController extends Controller
             'geboortedatum' => 'required',
             'adres' => 'required',
             'telefoonnummer' => 'required',
-            'email' => 'required',
-            'instituut' => 'required',
+            'email' => 'required|email|unique:jongeren',
+            'add_instituut' => 'required',
         ]);
         // dd($request->all());
         Jongere::create([
@@ -37,10 +37,10 @@ class JongereController extends Controller
             'adres' => $request->adres,
             'telefoonnummer' => $request->telefoonnummer,
             'email' => $request->email,
-            'instituut' => $request->instituut,
+            'instituut' => $request->add_instituut,
         ]);
 
-        return redirect()->route('dashboard')->with('status', 'success');
+        return redirect()->route('dashboard')->with('status', 'added');
     }
 
     public function EditJongere($id): View
@@ -59,13 +59,13 @@ class JongereController extends Controller
             'achternaam' => 'required',
             'geboortedatum' => 'required',
             'telefoonnummer' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
             'adres' => 'required',
-            'instituut' => 'required',
+            'edit_instituut' => 'required',
         ]);
 
         if (!$Jongere) {
-            return redirect()->route('dashboard')->with('error', '');
+            return redirect()->route('dashboard')->with('status', 'error');
         }
 
         $Jongere->update([
@@ -75,18 +75,22 @@ class JongereController extends Controller
             'telefoonnummer' => $request->telefoonnummer,
             'email' => $request->email,
             'adres' => $request->adres,
-            'instituut' => $request->instituut,
+            'instituut' => $request->edit_instituut,
         ]);
 
-        return redirect()->route('')->with('status', 'success');
+        return redirect()->route('')->with('status', 'edited');
     }
 
     public function DestroyJongere($id): RedirectResponse
     {
         $Jongere = Jongere::find($id);
 
+        if (!$Jongere) {
+            return redirect()->route('dashboard')->with('status', 'error');
+        }
+
         $Jongere->delete();
 
-        return redirect()->route('dashboard')->with('status', 'success');
+        return redirect()->route('dashboard')->with('status', 'deleted');
     }
 }

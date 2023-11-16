@@ -3,8 +3,8 @@ $InstitutenOptions = [];
 
 foreach ($Instituten as $Instituut) {
     $InstitutenOptions[] = [
-        'naam' => $Instituut->naam,
-        'id' => $Instituut->id,
+        'edit-naam' => $Instituut->naam,
+        'edit-id' => $Instituut->id,
     ];
 }
 ?>
@@ -51,14 +51,14 @@ foreach ($Instituten as $Instituut) {
         </div>
 
         <div>
-            <x-input-label for="instituut" :value="__('Instituut')" />
-            <x-bladewind.select name="instituut"
+            <x-input-label for="edit_instituut" :value="__('Instituut')" />
+            <x-bladewind.select id="edit_instituut" name="edit_instituut"
                 searchable="true"
                 required="true"
-                label_key="naam"
-                value_key="id"
+                label_key="edit-naam"
+                value_key="edit-id"
             :data="$InstitutenOptions" />
-            <x-input-error class="mt-2" :messages="$errors->get('instituut')" />
+            <x-input-error class="mt-2" :messages="$errors->get('edit_instituut')" />
         </div>
 
         <div class="flex justify-end mt-6">
@@ -66,9 +66,9 @@ foreach ($Instituten as $Instituut) {
                 {{ __('Cancel') }}
             </x-secondary-button>
 
-            <x-danger-button class="ml-3">
+            <x-primary-button class="ml-3">
                 {{ __('Edit Jongere') }}
-            </x-danger-button>
+            </x-primary-button>
         </div>
     </form>
 </x-modal>

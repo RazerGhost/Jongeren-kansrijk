@@ -20,6 +20,7 @@
                 <th>Email</th>
                 <th>Telefoonnummer</th>
                 <th>Instituut</th>
+                <th>Acties</th>
             </x-slot>
             @foreach ($Jongeren as $Jongere)
                 <tr>

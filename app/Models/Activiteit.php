@@ -24,8 +24,17 @@ class Activiteit extends Model
         return $this->hasMany(JongereController::class);
     }
 
+    public function setJongerenAttribute($value)
+    {
+        $this->attributes['jongeren'] = json_encode($value);
+    }
+
+    public function getJongerenAttribute($value)
+    {
+        return $this->attributes['jongeren'] = json_decode($value);
+    }
+
     protected $casts = [
-        'datum' => 'datetime',
         'jongeren' => 'array',
     ];
 }

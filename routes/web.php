@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\InstituutController;
 use App\Http\Controllers\JongereController;
+use App\Http\Controllers\ActiviteitController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,6 +40,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/jongere/edit/{id}', [JongereController::class,'EditJongere'])->name('jongere.edit');
     Route::patch('/jongere/update/{id}', [JongereController::class,'UpdateJongere'])->name('jongere.update');
     Route::delete('/jongere/delete/{id}', [JongereController::class,'DestroyJongere'])->name('jongere.delete');
+
+    // Activiteit routes
+    Route::post('activiteit/store', [ActiviteitController::class, 'StoreActiviteit'])->name('activiteit.store');
+    Route::get('activiteit/edit/{id}', [ActiviteitController::class,'EditActiviteit'])->name('activiteit.edit');
+    Route::patch('activiteit/update/{id}', [ActiviteitController::class,'UpdateActiviteit'])->name('activiteit.update');
+    Route::delete('activiteit/delete/{id}', [ActiviteitController::class,'DestroyActiviteit'])->name('activiteit.delete');
 });
 
 require __DIR__.'/auth.php';
