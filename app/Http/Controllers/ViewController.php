@@ -14,8 +14,11 @@ class ViewController extends Controller
     public function index(): View
     {
         $Activiteiten = Activiteit::all();
+        $ActCount = Activiteit::count();
         $Jongeren = Jongere::all();
+        $JongCount = Jongere::count();
         $Instituten = Instituut::all();
-        return view("dashboard", compact("Activiteiten", "Jongeren", "Instituten"));
+        $InstCount = Instituut::count();
+        return view("dashboard", compact("Activiteiten", "Jongeren", "Instituten", "ActCount", "JongCount", "InstCount"));
     }
 }
