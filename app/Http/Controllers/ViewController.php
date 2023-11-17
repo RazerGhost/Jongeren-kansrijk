@@ -5,20 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 # Model Imports
-use App\Models\Activiteit;
+use App\Models\Activity;
 use App\Models\Jongere;
-use App\Models\Instituut;
+use App\Models\Institute;
 
 class ViewController extends Controller
 {
     public function index(): View
     {
-        $Activiteiten = Activiteit::all();
-        $ActCount = Activiteit::count();
+        $Activities = Activity::all();
+        $ActCount = Activity::count();
         $Jongeren = Jongere::all();
         $JongCount = Jongere::count();
-        $Instituten = Instituut::all();
-        $InstCount = Instituut::count();
-        return view("dashboard", compact("Activiteiten", "Jongeren", "Instituten", "ActCount", "JongCount", "InstCount"));
+        $Institutes = Institute::all();
+        $InstCount = Institute::count();
+        return view("dashboard", compact("Activities", "Jongeren", "Institutes", "ActCount", "JongCount", "InstCount"));
     }
 }

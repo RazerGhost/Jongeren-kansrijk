@@ -11,18 +11,18 @@ class Jongere extends Model
     use HasFactory;
     protected $table = 'jongeren';
     protected $fillable = [
-        'voornaam',
-        'achternaam',
-        'geboortedatum',
-        'telefoonnummer',
+        'name',
+        'surname',
+        'dob',
+        'phonenumber',
         'email',
-        'adres',
-        'instituut',
+        'address',
+        'institute',
     ];
 
-    public function activiteiten(): BelongsTo
+    public function activities(): BelongsTo
     {
-        return $this->belongsTo(Activiteit::class);
+        return $this->belongsTo(Activity::class);
     }
 
 }

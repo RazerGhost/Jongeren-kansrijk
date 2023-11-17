@@ -6,15 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Instituut extends Model
+class Institute extends Model
 {
     use HasFactory;
-    protected $table = 'instituten';
+    protected $table = 'institutes';
     protected $fillable = [
-        'naam',
-        'beschrijving',
-        'adres',
+        'name',
+        'description',
+        'address',
         'email',
-        'telefoonnummer',
+        'phonenumber',
     ];
 }

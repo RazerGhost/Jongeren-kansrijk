@@ -6,48 +6,36 @@ use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 # Model Imports
-use App\Models\Activiteit;
+use App\Models\Activity;
 use App\Models\Jongere;
-use App\Models\Instituut;
+use App\Models\Institute;
 
 class JongereController extends Controller
 {
-    public function AddJongere(): View
-    {
-        $Instituten = Instituut::all();
-        return view("Jongere.add-Jongere", compact("Instituten"));
-    }
 
     public function StoreJongere(Request $request)
     {
         $request->validate([
-            'voornaam' => 'required',
-            'achternaam' => 'required',
-            'geboortedatum' => 'required',
-            'adres' => 'required',
-            'telefoonnummer' => 'required',
+            'name' => 'required',
+            'surname' => 'required',
+            'dob' => 'required',
+            'address' => 'required',
+            'phonenumber' => 'required',
             'email' => 'required|email|unique:jongeren',
             'add_instituut' => 'required',
         ]);
         // dd($request->all());
         Jongere::create([
-            'voornaam' => $request->voornaam,
-            'achternaam' => $request->achternaam,
-            'geboortedatum' => $request->geboortedatum,
-            'adres' => $request->adres,
-            'telefoonnummer' => $request->telefoonnummer,
+            'name' => $request->name,
+            'surname' => $request->surname,
+            'dob' => $request->dob,
+            'address' => $request->address,
+            'phonenumber' => $request->phonenumber,
             'email' => $request->email,
-            'instituut' => $request->add_instituut,
+            'institute' => $request->add_instituut,
         ]);
 
         return redirect()->route('dashboard')->with('status', 'added');
-    }
-
-    public function EditJongere($id): View
-    {
-        $Jongere = Jongere::find($id);
-
-        return view('Jongere.edit-Jongere', compact('Jongere'));
     }
 
     public function UpdateJongere(Request $request, $id): RedirectResponse
@@ -55,12 +43,12 @@ class JongereController extends Controller
         $Jongere = Jongere::find($id);
 
         $request->validate([
-            'voornaam' => 'required',
-            'achternaam' => 'required',
-            'geboortedatum' => 'required',
-            'telefoonnummer' => 'required',
+            'name' => 'required',
+            'surname' => 'required',
+            'dob' => 'required',
+            'phonenumber' => 'required',
             'email' => 'required|email',
-            'adres' => 'required',
+            'address' => 'required',
         ]);
 
         if (!$Jongere) {
@@ -68,13 +56,13 @@ class JongereController extends Controller
         }
 
         $Jongere->update([
-            'voornaam' => $request->voornaam,
-            'achternaam' => $request->achternaam,
-            'geboortedatum' => $request->geboortedatum,
-            'telefoonnummer' => $request->telefoonnummer,
+            'name' => $request->name,
+            'surname' => $request->surname,
+            'dob' => $request->dob,
+            'phonenumber' => $request->phonenumber,
             'email' => $request->email,
-            'adres' => $request->adres,
-            'instituut' => $request->input("edit_instituut_{$Jongere->id}"),
+            'address' => $request->address,
+            'institute' => $request->input("edit_instituut_{$Jongere->id}"),
         ]);
 
         return redirect()->route('dashboard')->with('status', 'edited');

@@ -1,10 +1,15 @@
 <?php
-$InstitutenOptions = [];
+$InstitutenOptions = [
+    [
+        "add-name" => "test",
+        "add-id" => "test",
+    ],
+];
 
-foreach ($Instituten as $Instituut) {
+foreach ($Institutes as $Institute) {
     $InstitutenOptions[] = [
-        'add-naam' => $Instituut->naam,
-        'add-id' => $Instituut->id,
+        "add-name" => $Institute->name,
+        "add-id" => $Institute->id,
     ];
 }
 ?>
@@ -16,33 +21,33 @@ foreach ($Instituten as $Instituut) {
         @csrf
 
         <div>
-            <x-input-label for="voornaam" :value="__('voornaam')" />
-            <x-text-input id="voornaam" name="voornaam" type="text" class="block w-full mt-1" required autofocus autocomplete="voornaam" />
-            <x-input-error class="mt-2" :messages="$errors->get('voornaam')" />
+            <x-input-label for="name" :value="__('name')" />
+            <x-text-input id="name" name="name" type="text" class="block w-full mt-1" required autofocus autocomplete="name" />
+            <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
         <div>
-            <x-input-label for="achternaam" :value="__('achternaam')" />
-            <x-text-input id="achternaam" name="achternaam" type="text" class="block w-full mt-1" required autofocus autocomplete="achternaam" />
-            <x-input-error class="mt-2" :messages="$errors->get('achternaam')" />
+            <x-input-label for="surname" :value="__('surname')" />
+            <x-text-input id="surname" name="surname" type="text" class="block w-full mt-1" required autofocus autocomplete="surname" />
+            <x-input-error class="mt-2" :messages="$errors->get('surname')" />
         </div>
 
         <div>
-            <x-input-label for="geboortedatum" :value="__('geboortedatum')" />
-            <x-text-input id="geboortedatum" name="geboortedatum" type="date" class="block w-full mt-1" required autofocus autocomplete="geboortedatum" />
-            <x-input-error class="mt-2" :messages="$errors->get('geboortedatum')" />
+            <x-input-label for="dob" :value="__('dob')" />
+            <x-text-input id="dob" name="dob" type="date" class="block w-full mt-1" required autofocus autocomplete="dob" />
+            <x-input-error class="mt-2" :messages="$errors->get('dob')" />
         </div>
 
         <div>
-            <x-input-label for="adres" :value="__('Adres')" />
-            <x-text-input id="adres" name="adres" type="text" class="block w-full mt-1" required autofocus autocomplete="adres" />
-            <x-input-error class="mt-2" :messages="$errors->get('adres')" />
+            <x-input-label for="address" :value="__('Address')" />
+            <x-text-input id="address" name="address" type="text" class="block w-full mt-1" required autofocus autocomplete="address" />
+            <x-input-error class="mt-2" :messages="$errors->get('address')" />
         </div>
 
         <div>
-            <x-input-label for="telefoonnummer" :value="__('Telefoonnummer')" />
-            <x-text-input id="telefoonnummer" name="telefoonnummer" type="text" class="block w-full mt-1" required autofocus autocomplete="telefoonnummer" />
-            <x-input-error class="mt-2" :messages="$errors->get('telefoonnummer')" />
+            <x-input-label for="phonenumber" :value="__('Phonenumber')" />
+            <x-text-input id="phonenumber" name="phonenumber" type="text" class="block w-full mt-1" required autofocus autocomplete="phonenumber" />
+            <x-input-error class="mt-2" :messages="$errors->get('phonenumber')" />
         </div>
 
         <div>
@@ -52,12 +57,12 @@ foreach ($Instituten as $Instituut) {
         </div>
 
         <div>
-            <x-input-label for="add_instituut" :value="__('Instituut')" />
+            <x-input-label for="add_instituut" :value="__('Institute')" />
             <x-bladewind.select id="add_instituut" name="add_instituut"
                 searchable="true"
                 required="true"
-                placeholder="Selecteer het instituut"
-                label_key="add-naam"
+                placeholder="Selecteer het institute"
+                label_key="add-name"
                 value_key="add-id"
             :data="$InstitutenOptions" />
             <x-input-error class="mt-2" :messages="$errors->get('add_instituut')" />

@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ViewController;
-use App\Http\Controllers\InstituutController;
+use App\Http\Controllers\InstituteController;
 use App\Http\Controllers\JongereController;
-use App\Http\Controllers\ActiviteitController;
+use App\Http\Controllers\ActivityController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,11 +29,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Instituut routes
-    Route::post('/instituut/store', [InstituutController::class,'StoreInstituut'])->name('instituut.store');
-    Route::get('/instituut/edit/{id}', [InstituutController::class,'EditInstituut'])->name('instituut.edit');
-    Route::patch('/instituut/update/{id}', [InstituutController::class,'UpdateInstituut'])->name('instituut.update');
-    Route::delete('/instituut/delete/{id}', [InstituutController::class,'DestroyInstituut'])->name('instituut.delete');
+    // Institute routes
+    Route::post('/institute/store', [InstituteController::class,'StoreInstitute'])->name('institute.store');
+    Route::get('/institute/edit/{id}', [InstituteController::class,'EditInstitute'])->name('institute.edit');
+    Route::patch('/institute/update/{id}', [InstituteController::class,'UpdateInstitute'])->name('institute.update');
+    Route::delete('/institute/delete/{id}', [InstituteController::class,'DestroyInstitute'])->name('institute.delete');
 
     // Jongere routes
     Route::post('/jongere/store', [JongereController::class, 'StoreJongere'])->name('jongere.store');
@@ -41,11 +41,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/jongere/update/{id}', [JongereController::class,'UpdateJongere'])->name('jongere.update');
     Route::delete('/jongere/delete/{id}', [JongereController::class,'DestroyJongere'])->name('jongere.delete');
 
-    // Activiteit routes
-    Route::post('activiteit/store', [ActiviteitController::class, 'StoreActiviteit'])->name('activiteit.store');
-    Route::get('activiteit/edit/{id}', [ActiviteitController::class,'EditActiviteit'])->name('activiteit.edit');
-    Route::patch('activiteit/update/{id}', [ActiviteitController::class,'UpdateActiviteit'])->name('activiteit.update');
-    Route::delete('activiteit/delete/{id}', [ActiviteitController::class,'DestroyActiviteit'])->name('activiteit.delete');
+    // Activity routes
+    Route::post('/activity/store', [ActivityController::class, 'StoreActivity'])->name('activity.store');
+    Route::get('/activity/edit/{id}', [ActivityController::class,'EditActivity'])->name('activity.edit');
+    Route::patch('/activity/update/{id}', [ActivityController::class,'UpdateActivity'])->name('activity.update');
+    Route::delete('/activity/delete/{id}', [ActivityController::class,'DestroyActivity'])->name('activity.delete');
 });
 
 require __DIR__.'/auth.php';

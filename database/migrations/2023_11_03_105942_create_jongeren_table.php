@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('jongeren', function (Blueprint $table) {
             $table->id();
-            $table->string('voornaam');
-            $table->string('achternaam');
-            $table->date('geboortedatum');
-            $table->string('telefoonnummer');
+            $table->string('name');
+            $table->string('surname');
+            $table->date('dob');
+            $table->string('phonenumber');
             $table->string('email')->unique();
-            $table->string('adres');
-            $table->foreignId('instituut')->constrained('instituten');
+            $table->string('address');
+            $table->foreignId('institute')->constrained('institutes');
             $table->timestamps();
         });
     }

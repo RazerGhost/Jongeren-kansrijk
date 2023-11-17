@@ -40,7 +40,7 @@
                         </x-slot>
 
                     </x-bladewind::statistic>
-                    <x-bladewind::statistic number="{{ $ActCount }}" label="Totaal aantal activiteiten">
+                    <x-bladewind::statistic number="{{ $ActCount }}" label="Totaal aantal activities">
 
                         <x-slot name="icon">
                             <svg class="w-16 h-16 p-2 text-white bg-blue-500 rounded-full">
@@ -49,7 +49,7 @@
                         </x-slot>
 
                     </x-bladewind::statistic>
-                    <x-bladewind::statistic number="{{ $InstCount }}" label="Totaal aantal instituten">
+                    <x-bladewind::statistic number="{{ $InstCount }}" label="Totaal aantal institutes">
 
                         <x-slot name="icon">
                             <svg class="w-16 h-16 p-2 text-white bg-blue-500 rounded-full">
@@ -64,8 +64,8 @@
                 <x-bladewind.tab-group name="tables">
                     <x-slot name="headings">
                         <x-bladewind.tab-heading name="Jongeren" active="true" label="Jongeren" />
-                        <x-bladewind.tab-heading name="Activiteiten" label="Activiteiten" />
-                        <x-bladewind.tab-heading name="Instituten" label="Instituten" />
+                        <x-bladewind.tab-heading name="Activities" label="Activities" />
+                        <x-bladewind.tab-heading name="Institutes" label="Institutes" />
                     </x-slot>
 
                     <x-bladewind.tab-body>
@@ -74,14 +74,14 @@
                             @include('tables.jongeren')
                         </x-bladewind.tab-content>
 
-                        {{-- Tab Content for Activiteiten --}}
-                        <x-bladewind.tab-content name="Activiteiten">
-                            @include('tables.activiteiten')
+                        {{-- Tab Content for activities --}}
+                        <x-bladewind.tab-content name="Activities">
+                            @include('tables.activities')
                         </x-bladewind.tab-content>
 
-                        {{-- Tab Content for Instituten --}}
-                        <x-bladewind.tab-content name="Instituten">
-                            @include('tables.instituten')
+                        {{-- Tab Content for Institutes --}}
+                        <x-bladewind.tab-content name="Institutes">
+                            @include('tables.institutes')
                         </x-bladewind.tab-content>
                     </x-bladewind.tab-body>
                 </x-bladewind.tab-group>

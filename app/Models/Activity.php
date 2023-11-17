@@ -7,15 +7,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Activiteit extends Model
+class Activity extends Model
 {
     use HasFactory;
-    protected $table = 'activiteiten';
+    protected $table = 'activities';
     protected $fillable = [
-        'naam',
-        'beschrijving',
-        'locatie',
-        'datum',
+        'name',
+        'description',
+        'location',
+        'date',
         'jongeren',
     ];
 

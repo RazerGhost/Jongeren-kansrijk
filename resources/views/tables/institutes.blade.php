@@ -2,38 +2,40 @@
     <div>
         <header>
             <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                {{ __('Activiteten') }}
+                {{ __('Institutes') }}
             </h2>
 
             <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                {{ __('Hier kan je alle activiteiten vinden.') }}
+                {{ __('Hier kan je alle institutes vinden.') }}
             </p>
         </header>
     </div>
     <div>
         <x-bladewind.table divider="thin">
             <x-slot name="header">
-                <th>Naam</th>
-                <th>Beschrijving</th>
-                <th>Locatie</th>
-                <th>Datum</th>
-                <th>Jongeren</th>
+                <th></th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Phonenumber</th>
                 <th>Acties</th>
             </x-slot>
-            @foreach ($Activiteiten as $Activiteit)
+            @foreach ($Institutes as $Institute)
                 <tr>
-                    <td>{{ __($Activiteit->naam) }}</td>
-                    <td>{{ __($Activiteit->beschrijving) }}</td>
-                    <td>{{ __($Activiteit->locatie) }}</td>
-                    <td>{{ __($Activiteit->datum) }}</td>
-                    <td>{{ __($Activiteit->jongeren) }}</td>
+                    <td>{{ __($Institute->id) }}</td>
+                    <td>{{ __($Institute->name) }}</td>
+                    <td>{{ __($Institute->description) }}</td>
+                    <td>{{ __($Institute->address) }}</td>
+                    <td>{{ __($Institute->email) }}</td>
+                    <td>{{ __($Institute->phonenumber) }}</td>
                     <td>
                         <div class="flex flex-row gap-4">
                             <div>
-                                @include('activiteit.delete-activiteit')
+                                @include('institute.delete-institute')
                             </div>
                             <div>
-                                @include('activiteit.edit-activiteit')
+                                @include('institute.edit-institute')
                             </div>
                         </div>
                     </td>
@@ -43,7 +45,7 @@
         <div class="flex flex-row mt-5">
             <div class="flex flex-1"></div>
             <div class="flex flex-row-reverse flex-1">
-                @include('activiteit.add-activiteit')
+                @include('institute.add-institute')
             </div>
         </div>
     </div>
