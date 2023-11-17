@@ -54,7 +54,7 @@ class ActiviteitController extends Controller
         ]);
 
         if (!$Activiteit) {
-            return redirect()->route('')->with('status', 'error');
+            return redirect()->route('dashboard')->with('status', 'error');
         }
 
         $Activiteit->update([
@@ -65,7 +65,7 @@ class ActiviteitController extends Controller
             'jongeren' => $request->input("edit_jongeren_{$Activiteit->id}"),
         ]);
 
-        return redirect()->route('')->with('status','edited');
+        return redirect()->route('dashboard')->with('status','edited');
     }
 
     public function DestroyActiviteit($id): RedirectResponse
