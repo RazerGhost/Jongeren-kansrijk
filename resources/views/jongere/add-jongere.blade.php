@@ -2,7 +2,7 @@
 $InstitutenOptions = [
     [
         "add-name" => "test",
-        "add-id" => "test",
+        "add-id" => "99999",
     ],
 ];
 

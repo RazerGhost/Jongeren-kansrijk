@@ -2,7 +2,7 @@
 $JongereOptions = [
     [
         "add-name-surname" => "test",
-        "add-jid" => "test",
+        "add-jid" => "9999",
     ],
 ];
 
